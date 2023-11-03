@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.photo {
+  background-image: url("favicon.ico");
+  background-size: cover;
+}
