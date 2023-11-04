@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const isUser = await User.findOne({ email })
 
     if (isUser) {
-      return NextResponse.json({ status: false, message: "User already exists!" })
+      return NextResponse.json({ message: "User already exists!" }, { status: 400 })
     }
 
     // create salt
@@ -30,10 +30,9 @@ export async function POST(request: NextRequest) {
 
     const insertUser = await newUser.save()
     return NextResponse.json({
-      status: true,
       message: "User Submitted Successfully!",
       insertUser
-    })
+    }, { status: 200 })
 
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 })
