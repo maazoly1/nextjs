@@ -23,7 +23,6 @@ const Form = () => {
                 router.push("/profile", { scroll: false })
             }     
         } catch (error:any) {
-            console.log("Signup Error : ",error.message)
             toast.error(error.message);
         } finally {
             setLoading(false)
