@@ -18,12 +18,12 @@ const Form = () => {
         try {
             setLoading(true)
             const result = await axios.post("/api/users/signup", userData);
-            if(result.data.status) {
+            if(result.status == 200) {
                 toast.success(result.data.message)
                 router.push("/profile", { scroll: false })
             }     
         } catch (error:any) {
-            toast.error(error.message);
+            toast.error(error.response.data.message);
         } finally {
             setLoading(false)
         }

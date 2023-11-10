@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
 export async function getDataFromToken(request: NextRequest) {
@@ -8,6 +8,6 @@ export async function getDataFromToken(request: NextRequest) {
         const decodedToken : any = jwt.verify(token, process.env.TOKEN_SECRET!)
         return decodedToken.id
     } catch (error:any) {
-        throw new Error(error.message);
+        return NextResponse.json({ message : error.message }, {status: 400})
     }
 }

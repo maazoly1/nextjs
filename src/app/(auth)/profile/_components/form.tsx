@@ -15,10 +15,14 @@ const Form = () => {
 
     useEffect(() => {
       const profile = async () => {
-        const response = await axios.get("/api/users/profile")
-        if(response.status === 200){
-            setUserData(response.data.data)
-        }
+        try {
+            const response = await axios.get("/api/users/profile")
+            if(response.status === 200){
+                setUserData(response.data.data)
+            }    
+        } catch (error:any) {
+            toast.error(error.message)
+        }        
       }
       profile();
     }, [])    
