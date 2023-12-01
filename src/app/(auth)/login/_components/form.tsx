@@ -20,7 +20,7 @@ const Form = () => {
             const result = await axios.post("/api/users/login", userData);
             if(result.status == 200) {
                 toast.success(result.data.message)
-                router.push("/profile", { scroll: false })
+                router.push("/", { scroll: false })
             }     
         } catch (error:any) {
             toast.error(error.message);
